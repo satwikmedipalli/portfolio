@@ -8,30 +8,23 @@ export const siteConfig = {
     caption: "This is the peace you'll feel when you hire me.",
   },
   location: "Livingston, NJ",
-  email: "sathwik.medipalli@gmail.com",
+  email: "2atw1kmedipalli@gmail.com",
   phone: "945 544 2418",
   linkedin: "https://linkedin.com/in/medipalli-satwik",
   github: "https://github.com/satwikmed",
   calendarUrl: "https://cal.com/medipalli-satwik-6qoa0v/15min",
   calendarLabel: "book 15 min with me →",
-  resumes: {
-    data: {
-      href: "/Satwik_Medipalli_Data.pdf",
-      filename: "Satwik_Medipalli_Data.pdf",
-      label: "download me (Data version)",
-    },
-    ai: {
-      href: "/Satwik_Medipalli_AI_Engineer.pdf",
-      filename: "Satwik_Medipalli_AI_Engineer.pdf",
-      label: "download me (AI version)",
-    },
+  resume: {
+    href: "/Satwik_Medipalli_Resume.pdf",
+    filename: "Satwik_Medipalli_Resume.pdf",
+    label: "download my resume",
   },
   summary:
-    "UT Dallas MS Business Analytics (May 2026). Three internships, a UTD client project with DFW Technology, and 8 live AI/analytics products you can open: agents, RAG, eval, reliability ML, and terminals. Livingston, NJ. Open to work.",
+    "Software Engineer at Aagna, building the financial data pipeline behind an options risk platform. UT Dallas MS Business Analytics (May 2026), three internships, a UTD client project with DFW Technology, and 9 live AI/analytics products you can open: agents, RAG, eval, reliability ML, and terminals. Livingston, NJ. Open to AI/LLM Engineer and Data Scientist roles.",
 };
 
 export const stats = [
-  { label: "Projects Online", value: "8/8", status: "online" as const },
+  { label: "Projects Online", value: "9/9", status: "online" as const },
   { label: "Internships", value: "3", status: "online" as const },
   { label: "Records Processed", value: "100K+", status: "online" as const },
   { label: "Agents Deployed", value: "6", status: "online" as const },
@@ -45,7 +38,10 @@ export type Project = {
   highlights: string[];
   discipline: string[];
   stack: string[];
-  url: string;
+  /** Omitted for private apps with no public demo. */
+  url?: string;
+  /** Short status line on the card, e.g. "Live on Render". Defaults to "Live on Vercel". */
+  meta?: string;
   github?: string;
   featured?: boolean;
   span?: "default" | "wide";
@@ -209,6 +205,43 @@ export const projects: Project[] = [
     accent: "#5c3d1e",
     screenshot: "/projects/nfl-edge.png",
   },
+  {
+    id: "poker-night",
+    name: "Poker Night",
+    question:
+      "What if our home game could keep going after everyone moved to different cities?",
+    description:
+      "My friends and I used to play every week. Then we all moved, and no poker app plays the games the way we do at home. So I built one. It has ten of our house games, real time tables you join with a code, chat and emotes, and bots to practice against. It runs in the browser and saves to the iPhone home screen, no App Store needed.",
+    highlights: [
+      "Ten house games, including split pot ones like Triple 9, Double Board, and High-Low",
+      "Real time multiplayer over WebSockets. Join from any phone with a table code",
+      "Practice mode against up to 7 bots, plus table chat and animated emotes",
+    ],
+    discipline: ["Full stack", "Real time"],
+    stack: ["React", "TypeScript", "Vite", "Node.js", "WebSockets", "PWA"],
+    url: "https://poker.satwikmedipalli.dev",
+    meta: "Live on Render",
+    github: "https://github.com/satwikmed/poker-night",
+    accent: "#0f3d2e",
+    screenshot: "/projects/poker-night.png",
+  },
+  {
+    id: "endgame",
+    name: "Endgame",
+    question: "What if your phone's feed actually ended?",
+    description:
+      "A personal app, built for my iPhone, that replaces doomscrolling with a fixed set of cards each day: news, a coding lesson, markets, history, a chess drill, Italian practice, and one thing to watch. Every card is DONE or Skip. Once they are all cleared, the app tells you to put the phone down. Claude writes each lesson when I open it, through Claude Code running on my Mac, so there is no API bill.",
+    highlights: [
+      "Local first Expo app that syncs through Supabase with row level security",
+      "A Mac helper runs headless Claude Code to pull the news, write lessons, and answer chat",
+      "Chess drills from my own Chess.com games, spaced repetition Italian, and an MCP connector to discuss any card in Claude",
+    ],
+    discipline: ["AI Engineering", "Mobile", "Full stack"],
+    stack: ["Expo", "React Native", "TypeScript", "Supabase", "Claude Code", "MCP"],
+    meta: "Personal app, not public",
+    accent: "#1c3a32",
+    screenshot: "/projects/endgame.png",
+  },
 ];
 
 export type ExperiencePhase = {
@@ -222,6 +255,8 @@ export type Experience = {
   role: string;
   period: string;
   question: string;
+  /** Tag on the card. Defaults to "Internship". */
+  kind?: string;
   logo?: string;
   context?: string;
   product?: string;
@@ -233,10 +268,75 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
+    id: "aagna",
+    company: "Aagna",
+    role: "Software Engineer",
+    period: "Oct 2026 to Present",
+    kind: "Current role",
+    question:
+      "What does it take to give investors financial data they can actually trust?",
+    logo: "/logos/aagna.png",
+    product: "Financial data platform",
+    context:
+      "Aagna is a fintech startup building portfolio risk intelligence for options investors. I work remotely from Livingston, NJ on the data layer under the product: company financials, SEC filings, prices, macro data, and the calendars that tie them together.",
+    phases: [
+      {
+        title: "Financial data pipeline",
+        description:
+          "Built and extended the Python pipeline that loads US listed companies from SEC EDGAR (XBRL financials, 8-K, 6-K, 10-K/20-F, Form 4, 13F, N-PORT), Tiingo, FINRA, and OpenFIGI into SQLite and Postgres. Fixed how shareholders' equity was read from filings, which restored current balance sheets for Visa, Broadcom, UnitedHealth, P&G, Caterpillar, Verizon, AT&T, and Robinhood. Built share class weighted market cap, which moved Berkshire Hathaway from $741B to the correct $1.14T.",
+      },
+      {
+        title: "Fresher, more complete data",
+        description:
+          "Added a fallback that reads a filing's own XBRL when the SEC's company data lags, so the latest quarter shows up sooner, validated against published figures like TSMC's FY2025 revenue of NT$3.81T. Fixed foreign filers (TSMC earnings from 6-Ks, CEO and description from 20-Fs). Built a coverage audit that cut data gaps on the 50 company test set from 125 to 69, and the automated site check reached 0 failures.",
+      },
+      {
+        title: "Macro and calendar data",
+        description:
+          "Built a Fed and macro dataset from free public sources: FOMC meetings, projections, and dot plots since 2015, Fed speeches, the Beige Book, Treasury yields, the Fed's weekly balance sheet, CPI and jobs (BLS), GDP and PCE (BEA), FRED series, and an economic calendar. Added an earnings and dividend calendar with estimated next earnings dates for 48 of 50 companies.",
+      },
+      {
+        title: "Engineering quality",
+        description:
+          "Grew the test suite from 748 to 1,375 passing tests and added Postgres to CI. Ran a full code review that produced 36 fixes. Set up scheduled daily and weekly jobs with health checks and run status logging, and prepared the system for cloud deployment. Tagged every row with a license class (public, licensed, internal only) so redistribution stays compliant.",
+      },
+      {
+        title: "Vendor evaluation",
+        description:
+          "Compared market data vendors (Unusual Whales, Intrinio, Tiingo) on coverage, price history, and redistribution rights. Wrote the technical questions and contract review flags behind the final vendor decision.",
+      },
+      {
+        title: "Aagna News (current)",
+        description:
+          "Designed and prototyped a public financial news site covering markets, sectors, companies, rates, and SEC filings, with an interactive sector treemap, live prices and yield curves, and a black and gold design system. I own the backend and the live data plan on WebSocket streaming while a teammate builds the Next.js frontend.",
+      },
+    ],
+    stack: [
+      "Python",
+      "SQL",
+      "PostgreSQL",
+      "SQLite",
+      "Flask",
+      "pytest",
+      "Playwright",
+      "cron",
+      "XBRL",
+      "SEC EDGAR",
+      "REST + WebSocket APIs",
+    ],
+    bullets: [
+      "Own a Python pipeline loading SEC EDGAR XBRL filings, Tiingo, FINRA, and OpenFIGI into Postgres for US listed companies",
+      "Built share class weighted market cap (Berkshire Hathaway $741B to $1.14T) and cut data gaps on the 50 company test set from 125 to 69",
+      "Grew the test suite from 748 to 1,375 passing tests, added Postgres to CI, and shipped 36 fixes from a full code review",
+      "Built a Fed and macro dataset (FOMC, dot plots, Treasury yields, CPI, GDP, FRED) and an earnings calendar covering 48 of 50 companies",
+    ],
+  },
+  {
     id: "dfw-technology",
     company: "DFW Technology",
     role: "AI Researcher (UTD Client Project)",
     period: "Jan 2026 to May 2026",
+    kind: "Client project",
     question:
       "When should a mid-market company run private AI or small models instead of defaulting to a full LLM?",
     context:
@@ -467,7 +567,7 @@ export const skillOffers: SkillOffer[] = [
     title: "Languages",
     blurb:
       "Python for ML and pipelines. SQL when the truth lives in the database. JavaScript when it needs a face. R when the stats homework fights back.",
-    skills: ["Python", "SQL", "JavaScript", "R"],
+    skills: ["Python", "SQL", "TypeScript", "JavaScript", "R"],
   },
 ];
 
@@ -486,7 +586,7 @@ export const contactInquiries: ContactInquiry[] = [
     title: "Let's talk",
     meta: "Open to opportunities",
     blurb:
-      "If you are hiring for AI/LLM, data science, or analytics, email me. Eight live products, three internships. I respond fast.",
+      "If you are hiring for AI/LLM, data science, or analytics, email me. Nine live products, a software engineering role at a fintech startup, three internships. I respond fast.",
   },
 ];
 
@@ -526,11 +626,11 @@ export const recruiterMemo = {
   preface:
     "You made it to Recruiter Mode. Either someone forwarded you, you pressed R on purpose, or the floating HIRE SATWIK text finally broke you. This is the sane half. Explorer is where I get weird on purpose.",
   forwardBlurb:
-    "Satwik Medipalli. UT Dallas MS Business Analytics, Livingston NJ. 3 internships + UTD client project at DFW Technology + 8 live AI/analytics products (multiagent RAG, LLM eval, reliability ML, market terminals). Funny on purpose. Serious about the work. Open to AI/LLM Engineer and Data Scientist roles. Responds fast: sathwik.medipalli@gmail.com",
+    "Satwik Medipalli. Software Engineer at Aagna (fintech, SEC filings and market data pipelines). UT Dallas MS Business Analytics, Livingston NJ. 3 internships + UTD client project at DFW Technology + 9 live AI/analytics products (multiagent RAG, LLM eval, reliability ML, market terminals). Funny on purpose. Serious about the work. Open to AI/LLM Engineer and Data Scientist roles. Responds fast: 2atw1kmedipalli@gmail.com",
   caseLine:
-    "Eight live products. Three internships. One UTD client project. One sports + stocks nerd who wants the job.",
+    "Nine live products. One fintech engineering role. Three internships. One UTD client project. One sports + stocks nerd who wants the job.",
   whyNow:
-    "I finished my MS in Business Analytics at UT Dallas in May 2026. I'm looking for my first full time AI/LLM Engineer or Data Scientist role. The projects above are live if you want to check the work before we talk. I'm free to interview this week.",
+    "I finished my MS in Business Analytics at UT Dallas in May 2026, and since October I've been a Software Engineer at Aagna, building the financial data layer under an options risk platform. Next I want a full time AI/LLM Engineer or Data Scientist role. The projects above are live if you want to check the work before we talk. I'm free to interview this week.",
   proof: [
     {
       id: "lumen",
@@ -573,6 +673,13 @@ export const recruiterMemo = {
       hook: "Causal pitch redesign study on 5.6M+ Statcast pitches",
       url: "https://shapeshift.satwikmedipalli.dev",
       screenshot: "/projects/shapeshift.png",
+    },
+    {
+      id: "poker-night",
+      name: "Poker Night",
+      hook: "Real time multiplayer poker with 10 house games, built for my friends",
+      url: "https://poker.satwikmedipalli.dev",
+      screenshot: "/projects/poker-night.png",
     },
   ],
 };

@@ -59,7 +59,7 @@ export function Experience() {
         subtitle: job.product
           ? `${job.company} · ${job.product}`
           : job.company,
-        label: "Internship",
+        label: job.kind ?? "Internship",
         logo: job.logo,
         detail: <ExperienceDetail job={job} />,
       })),
@@ -70,7 +70,7 @@ export function Experience() {
     <InquiryStream
       sectionKey="experience"
       sectionId="experience"
-      eyebrow="Internships"
+      eyebrow="Experience"
       heading={
         <>
           Questions I

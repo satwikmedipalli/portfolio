@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { useMemo } from "react";
 import { InquiryStream } from "./inquiry/InquiryStream";
@@ -9,6 +10,17 @@ import { projects } from "@/lib/data";
 function ProjectDetail({ project }: { project: (typeof projects)[number] }) {
   return (
     <>
+      {project.screenshot && (
+        <div className="relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-sm border border-[#1a1a1a]/10 bg-[#111]">
+          <Image
+            src={project.screenshot}
+            alt={`${project.name} screenshot`}
+            fill
+            className="object-cover object-top"
+            sizes="(min-width: 768px) 480px, 100vw"
+          />
+        </div>
+      )}
       <p>{project.description}</p>
 
       <ul>
@@ -51,18 +63,20 @@ function ProjectDetail({ project }: { project: (typeof projects)[number] }) {
       </div>
 
       <div className="mt-8 flex flex-wrap items-center gap-6">
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2"
-        >
-          see live project
-          <ArrowUpRight
-            size={14}
-            className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          />
-        </a>
+        {project.url ? (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2"
+          >
+            see live project
+            <ArrowUpRight
+              size={14}
+              className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </a>
+        ) : null}
         {project.github && (
           <a
             href={project.github}
@@ -84,7 +98,7 @@ export function Projects() {
         id: project.id,
         question: project.question,
         title: project.name,
-        meta: "Live on Vercel",
+        meta: project.meta ?? "Live on Vercel",
         label: "Project",
         accent: project.accent,
         detail: <ProjectDetail project={project} />,

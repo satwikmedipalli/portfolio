@@ -340,20 +340,11 @@ export function RecruiterBrief() {
                     email me
                   </a>,
                   <ResumeDownload
-                    key="resume-data"
-                    kind="data"
+                    key="resume"
                     className="btn-secondary text-sm"
                     source="recruiter_memo"
                   >
-                    download resume (Data version)
-                  </ResumeDownload>,
-                  <ResumeDownload
-                    key="resume-ai"
-                    kind="ai"
-                    className="btn-secondary text-sm"
-                    source="recruiter_memo"
-                  >
-                    download resume (AI version)
+                    download resume
                   </ResumeDownload>,
                   <MemoLink key="linkedin" href={siteConfig.linkedin}>
                     LinkedIn
@@ -440,7 +431,7 @@ export function RecruiterBrief() {
                     </div>
 
                     <div>
-                      <h3 className="memo-label">Projects (all live)</h3>
+                      <h3 className="memo-label">Projects</h3>
                       <div className="mt-5 space-y-5">
                         {projects.map((project, index) => (
                           <motion.article
@@ -459,7 +450,7 @@ export function RecruiterBrief() {
                                 {project.name}
                               </h4>
                               <div className="flex gap-3 font-mono text-[10px] uppercase tracking-widest">
-                                <MemoLink href={project.url}>Live</MemoLink>
+                                {project.url && <MemoLink href={project.url}>Live</MemoLink>}
                                 {project.github && (
                                   <MemoLink href={project.github}>Code</MemoLink>
                                 )}

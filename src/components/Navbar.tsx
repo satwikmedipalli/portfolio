@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/data";
-import { ResumeDownloadPair } from "./ResumeDownload";
+import { ResumeDownload } from "./ResumeDownload";
 import { ModeToggle } from "./mode/ModeToggle";
 import { useViewMode } from "./mode/ViewModeProvider";
 import { goToContactConfetti } from "./BottomConfetti";
@@ -36,12 +36,12 @@ export function Navbar() {
               <a href="#work" className="nav-link hidden sm:inline">
                 my work
               </a>
-              <ResumeDownloadPair
+              <ResumeDownload
                 className="nav-link hidden border-0 bg-transparent p-0 shadow-none hover:opacity-70 sm:inline"
                 source="navbar"
-                dataLabel="download me (Data version)"
-                aiLabel="download me (AI version)"
-              />
+              >
+                download my resume
+              </ResumeDownload>
               <a
                 href="#contact"
                 className="nav-link hidden sm:inline"

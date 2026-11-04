@@ -7,7 +7,7 @@ import type { InquiryItem } from "./inquiry/InquiryProvider";
 import { contactInquiries, siteConfig } from "@/lib/data";
 import { trackPortfolioEvent } from "@/lib/analytics";
 import { BottomConfetti } from "./BottomConfetti";
-import { ResumeDownloadPair } from "./ResumeDownload";
+import { ResumeDownload } from "./ResumeDownload";
 import { BookCallButton } from "./BookCallButton";
 
 function ContactDetail({ blurb }: { blurb: string }) {
@@ -27,12 +27,12 @@ function ContactDetail({ blurb }: { blurb: string }) {
         >
           email me
         </a>
-        <ResumeDownloadPair
+        <ResumeDownload
           className="btn-secondary inline-block text-sm"
           source="contact_drawer"
-          dataLabel="download resume (Data version)"
-          aiLabel="download resume (AI version)"
-        />
+        >
+          download resume
+        </ResumeDownload>
       </div>
 
       <div className="drawer-links">

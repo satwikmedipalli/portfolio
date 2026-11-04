@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { heroProof } from "@/lib/data";
+import { heroProof, projects } from "@/lib/data";
 import { trackPortfolioEvent } from "@/lib/analytics";
 
 export function LiveProofStrip() {
@@ -22,7 +22,7 @@ export function LiveProofStrip() {
             href="#work"
             className="font-mono text-[10px] uppercase tracking-widest text-[#5c5c5c] underline decoration-[#d4a72c] decoration-2 underline-offset-4 transition-colors hover:text-[#1a1a1a]"
           >
-            all 8 projects ↓
+            all {projects.length} projects ↓
           </a>
         </div>
 
