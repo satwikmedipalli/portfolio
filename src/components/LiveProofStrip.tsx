@@ -4,6 +4,29 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { heroProof, projects } from "@/lib/data";
 import { trackPortfolioEvent } from "@/lib/analytics";
+import { useState } from "react";
+
+/** Screenshot of the live site, or the project name if the image is missing. */
+function ProofShot({ name, screenshot }: { name: string; screenshot?: string }) {
+  const [failed, setFailed] = useState(false);
+  if (screenshot && !failed) {
+    return (
+      <Image
+        src={screenshot}
+        alt={`${name} screenshot`}
+        fill
+        className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+        sizes="(max-width: 768px) 90vw, 30vw"
+        onError={() => setFailed(true)}
+      />
+    );
+  }
+  return (
+    <div className="flex h-full w-full items-end bg-[#1a1a1a] p-5 transition-transform duration-500 group-hover:scale-[1.02]">
+      <p className="font-serif text-3xl italic leading-tight text-[#ebe8e1]">{name}</p>
+    </div>
+  );
+}
 
 export function LiveProofStrip() {
   return (
@@ -15,7 +38,7 @@ export function LiveProofStrip() {
               Proof · open these
             </p>
             <p className="mt-2 max-w-xl font-serif text-base leading-relaxed text-[#5c5c5c]">
-              Three live products. Click any and poke around.
+              Three places to start. Click any and poke around.
             </p>
           </div>
           <a
@@ -42,15 +65,9 @@ export function LiveProofStrip() {
               }
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-[#1a1a1a]/10 bg-[#ebe8e1] shadow-[4px_4px_0_0_rgba(26,26,26,0.08)] transition-transform duration-300 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 group-hover:shadow-[6px_6px_0_0_rgba(26,26,26,0.12)]">
-                <Image
-                  src={item.screenshot}
-                  alt={`${item.name} live demo`}
-                  fill
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-                  sizes="(max-width: 768px) 90vw, 30vw"
-                />
+                <ProofShot name={item.name} screenshot={item.screenshot} />
                 <span className="absolute left-2.5 top-2.5 rounded-sm bg-[#ebe8e1]/92 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-[#3d5a47]">
-                  Live
+                  {item.label}
                 </span>
               </div>
               <div className="mt-3 flex items-baseline justify-between gap-2">
