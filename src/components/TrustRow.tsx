@@ -2,7 +2,6 @@
 
 import { experience, projects } from "@/lib/data";
 
-const liveCount = projects.filter((p) => p.url).length;
 import { useInquiry } from "./inquiry/InquiryProvider";
 
 export function TrustRow() {
@@ -12,7 +11,7 @@ export function TrustRow() {
     <section className="border-y border-[#1a1a1a]/10 px-6 py-10 md:px-10">
       <div className="mx-auto max-w-6xl">
         <p className="section-intro max-w-2xl">
-          {experience.length} roles and {liveCount} live products.
+          {experience.length} roles and {projects.length} projects.
           Each one started as a question. Pick one below and read the answer in
           the margin.
         </p>

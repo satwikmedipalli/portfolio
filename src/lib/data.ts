@@ -1,17 +1,17 @@
 export const siteConfig = {
   name: "Satwik Medipalli",
   brand: "Satwik.",
-  title: "AI / LLM Engineer · Sports + Stocks Nerd",
+  title: "Software Engineer · Data & Real-Time Systems",
   heroImage: {
     src: "/hero-view.jpg",
     alt: "Snow covered alpine peaks above a sea of clouds at sunrise",
-    caption: "This is the peace you'll feel when you hire me.",
+    caption: "Clean data. Clear view.",
   },
   location: "Livingston, NJ",
-  email: "2atw1kmedipalli@gmail.com",
+  email: "satwik.medipalli@gmail.com",
   phone: "945 544 2418",
   linkedin: "https://linkedin.com/in/medipalli-satwik",
-  github: "https://github.com/satwikmed",
+  github: "https://github.com/satwikmedipalli",
   calendarUrl: "https://cal.com/medipalli-satwik-6qoa0v/15min",
   calendarLabel: "book 15 min with me →",
   resume: {
@@ -20,14 +20,14 @@ export const siteConfig = {
     label: "download my resume",
   },
   summary:
-    "Software Engineer at Aagna, building the financial data pipeline behind an options risk platform. UT Dallas MS Business Analytics (May 2026), three internships, a UTD client project with DFW Technology, and 9 live AI/analytics products you can open: agents, RAG, eval, reliability ML, and terminals. Livingston, NJ. Open to AI/LLM Engineer and Data Scientist roles.",
+    "Software Engineer at Aagna, where I built Aagna Markets, a live markets news and data site, end to end. UT Dallas MS Business Analytics (May 2026) and three internships. On the side I study baseball and football with public data and build real-time apps. Livingston, NJ.",
 };
 
 export const stats = [
-  { label: "Projects Online", value: "9/9", status: "online" as const },
+  { label: "Statcast pitches studied", value: "4.8M", status: "online" as const },
+  { label: "Prediction markets tracked", value: "270K", status: "online" as const },
   { label: "Internships", value: "3", status: "online" as const },
-  { label: "Records Processed", value: "100K+", status: "online" as const },
-  { label: "Agents Deployed", value: "6", status: "online" as const },
+  { label: "Card games, one engine", value: "11", status: "online" as const },
 ];
 
 export type Project = {
@@ -38,209 +38,122 @@ export type Project = {
   highlights: string[];
   discipline: string[];
   stack: string[];
-  /** Omitted for private apps with no public demo. */
+  /** Omitted for apps with no public demo. */
   url?: string;
-  /** Short status line on the card, e.g. "Live on Render". Defaults to "Live on Vercel". */
+  /** Short status line on the card, e.g. "Live on Render". */
   meta?: string;
   github?: string;
+  /** Show an "email me about it" link instead of code links. */
+  contact?: boolean;
   featured?: boolean;
   span?: "default" | "wide";
   accent: string;
   screenshot?: string;
 };
 
+const GH = "https://github.com/satwikmedipalli";
+const SHAPESHIFT_URL = "https://baseball-chi-rose.vercel.app";
+const CASINO_URL = "https://casino.satwikmedipalli.dev";
+const FOOTBALL_URL = "https://football.satwikmedipalli.dev";
+
 export const projects: Project[] = [
-  {
-    id: "sentinelai",
-    name: "SentinelAI",
-    question:
-      "What if people at work could use GenAI without hoping the model behaves?",
-    description:
-      "I built a gateway that sits in front of OpenAI, Anthropic, and Gemini. It plans the work, picks a model, checks the answer, and stops PII or sketchy prompts before anything goes out. There is a document copilot with citations, an audit trail, and evals that run in CI so bad changes do not slip into prod.",
-    highlights: [
-      "Plans the job, routes it, then a verifier can send shaky answers back",
-      "Catches PII and prompt injection, keeps an audit log, and has a human review queue",
-      "Evals gate every PR. Live on Render and Vercel with no credit card needed",
-    ],
-    discipline: ["AI Engineering", "Full stack", "MLOps"],
-    stack: ["LangGraph", "FastAPI", "React", "ChromaDB", "OpenTelemetry", "Docker"],
-    url: "https://sentinel.satwikmedipalli.dev",
-    github: "https://github.com/satwikmed/SentinelAI",
-    featured: true,
-    span: "wide",
-    accent: "#1f4e79",
-    screenshot: "/projects/sentinelai.png",
-  },
-  {
-    id: "lumen",
-    name: "Lumen",
-    question:
-      "Can you build a market terminal on public data that explains every number, and never invents one?",
-    description:
-      "S&P 500 research terminal in plain English. Live Yahoo last sale quotes, SEC XBRL financials and filings, FRED macro, a quant risk lab with correlation and portfolio backtests, and an AI layer that is only allowed to narrate evidence the backend already computed.",
-    highlights: [
-      "503 names · risk lab, screener, backtest vs SPY, compare mode",
-      "SEC XBRL statements + 12 ratios; grounded filing AI with citations",
-      "Sources page that refuses Level 1 claims, synthetic filler, and invented odds",
-    ],
-    discipline: ["Full stack", "Finance", "AI Engineering"],
-    stack: ["React", "FastAPI", "D3", "SEC EDGAR", "Yahoo", "FRED"],
-    url: "https://lumen.satwikmedipalli.dev",
-    github: "https://github.com/satwikmed/Lumen",
-    featured: true,
-    span: "wide",
-    accent: "#b42318",
-    screenshot: "/projects/lumen.png",
-  },
-  {
-    id: "silicon-sentinel",
-    name: "SiliconSentinel",
-    question: "Can you catch a GPU failure thirty days before it takes a rack offline?",
-    description:
-      "Fleet reliability intelligence for semiconductor hardware. Physics grounded failure simulation across 12 global sites, survival models, XGBoost remaining life scoring, and an LLM analyst that verifies every numeric claim.",
-    highlights: [
-      "83% recall at 80% precision on 30 day failure risk",
-      "Arrhenius / Black / Peck / Coffin Manson physics simulator",
-      "Ops console with decision queue, war room, and SHAP deep dives",
-    ],
-    discipline: ["ML", "Data Science", "AI Engineering"],
-    stack: ["Python", "XGBoost", "lifelines", "Next.js", "Pydantic AI"],
-    url: "https://silicon.satwikmedipalli.dev",
-    github: "https://github.com/satwikmed/SiliconSentinel",
-    featured: true,
-    span: "wide",
-    accent: "#0b6e74",
-    screenshot: "/projects/silicon-sentinel.png",
-  },
-  {
-    id: "diligence-ai",
-    name: "Diligence AI",
-    question: "What if a junior analyst's first pass on a 10K took minutes, not days?",
-    description:
-      "Autonomous due diligence for equity research. Upload a 10K and get a citation backed report with QoQ filing delta, earnings vs 10K cross checks, and ER memo export.",
-    highlights: [
-      "Six agent pipeline with A2A orchestration",
-      "SEC filing delta and contradiction scanning",
-      "Live on Vercel with pre built AAPL case study",
-    ],
-    discipline: ["AI Engineering", "Full stack", "Finance"],
-    stack: ["Next.js", "FastAPI", "Pydantic AI", "SQLite"],
-    url: "https://diligence.satwikmedipalli.dev",
-    github: "https://github.com/satwikmed/DiligenceAI",
-    featured: true,
-    accent: "#1e3a5f",
-    screenshot: "/projects/diligence-ai-nine.png",
-  },
-  {
-    id: "voiceiq",
-    name: "VoiceIQ",
-    question: "How do you know your voice agent is actually ready to ship?",
-    description:
-      "Calibrated testing harness for AI voice agents. Simulates caller conversations across nine scenarios, scores with an LLM judge, and validates trust with human calibration (MAE / Bland Altman).",
-    highlights: [
-      "9 scenarios with deploy gate at 90% pass rate (score ≥70)",
-      "Human-graded calibration (MAE 3.7, Bland Altman bias +2.8)",
-      "Turn-level evidence scoring across five dimensions",
-    ],
-    discipline: ["AI Engineering", "ML", "QA"],
-    stack: ["Python", "Streamlit", "Next.js", "Ollama"],
-    url: "https://voiceiq.satwikmedipalli.dev",
-    github: "https://github.com/satwikmed/VoiceIQ",
-    featured: true,
-    accent: "#4a1942",
-    screenshot: "/projects/voiceiq.png",
-  },
   {
     id: "shapeshift",
     name: "ShapeShift",
-    question: "When a pitcher reshapes a pitch, how do you know it actually helped?",
+    question: "Which offseason pitch redesigns actually work?",
     description:
-      "Baseball analytics research system for pitch design interventions. Outcome blind change detection, threshold frozen on 2024, locked 2025 matched event study, and Keep / Reshape / De emphasize recommendations for Baseball Operations.",
+      "Every winter, pitchers rebuild pitches in pitch labs. ShapeShift measures what those changes did once the season started. It uses every public Statcast pitch from 2020 to 2026 and compares each redesigned pitch with closely matched pitches that did not change.",
     highlights: [
-      "5.6M+ Statcast pitches in a reproducible DuckDB warehouse",
-      "Locked 2025 ATE +0.02 RV/100, near null aggregate effect",
-      "Featured Muñoz slider case at matched minus 0.29 RV/100",
+      "4.8M Statcast pitches in DuckDB. 1,054 redesigns found without looking at results, each matched to the 5 closest unchanged pitches",
+      "Added velocity is the change that reliably pays: +0.76 runs saved per 100 pitches (q = 0.016). More ride shows no average effect",
+      "Pre-trend check, 200 placebo runs (p < 0.005), held-out 2024 to 2026 seasons, and simulations that confirm the estimator is unbiased",
     ],
-    discipline: ["Data Science", "Sports Analytics", "Full stack"],
-    stack: ["Python", "DuckDB", "scikit learn", "Next.js", "Statcast"],
-    url: "https://shapeshift.satwikmedipalli.dev",
-    github: "https://github.com/satwikmed/ShapeShift",
+    discipline: ["Sports Analytics", "Causal Inference", "Data Engineering"],
+    stack: ["Python", "DuckDB", "pandas", "scikit-learn", "SciPy", "pybaseball", "Next.js"],
+    url: SHAPESHIFT_URL,
+    meta: "Live on Vercel",
+    github: `${GH}/baseball`,
     featured: true,
+    span: "wide",
     accent: "#8d1f2f",
     screenshot: "/projects/shapeshift.png",
   },
   {
-    id: "nfl-draft",
-    name: "NFL Draft Intelligence",
-    question: "Can you predict which draft prospect will last in the NFL before they're picked?",
+    id: "gridiron",
+    name: "Gridiron",
+    question: "Does the NFL combine tell you anything the draft slot doesn't?",
     description:
-      "Draft prospect evaluation with position specific XGBoost classifiers, SHAP explainability, historical comp engine, and Kaplan Meier survival analysis across 2000 to 2025 Combine data.",
+      "NFL analysis on public nflverse data. It ranks every team by expected points added, grades fourth-down calls with a transparent expected-points model, and tests whether combine results predict careers better than where a player was drafted.",
     highlights: [
-      "25 years of Combine and draft history",
-      "SHAP driven prospect insights",
-      "Career longevity survival models",
+      "The combine adds nothing beyond draft slot: 0.794 held-out AUC with pick and position, 0.791 with every drill added",
+      "Fourth-down model compares going for it, kicking and punting, fitted on 2018 to 2025 play-by-play",
+      "Team ranks by EPA per play, success rate and pass rate over expected. Every number is regenerated from the pipeline",
     ],
-    discipline: ["ML", "Data Analytics", "Full stack"],
-    stack: ["XGBoost", "SHAP", "lifelines", "Next.js"],
-    url: "https://draft.satwikmedipalli.dev",
-    github: "https://github.com/satwikmed/NFL-Draft-Intelligence",
+    discipline: ["Sports Analytics", "Machine Learning"],
+    stack: ["Python", "pandas", "Polars", "scikit-learn", "nflverse", "TypeScript"],
+    url: FOOTBALL_URL,
+    meta: "Live",
+    github: `${GH}/football`,
+    featured: true,
     accent: "#1a4d3e",
-    screenshot: "/projects/nfl-draft.png",
+    screenshot: "/projects/gridiron.png",
   },
   {
-    id: "nfl-edge",
-    name: "NFL Edge",
-    question: "Which teams are wasting cap space and which play calls are already telegraphed?",
-    description:
-      "Front office analytics OS grading play calling predictability, roster value and cap efficiency, and in game decision quality across all 32 NFL teams.",
-    highlights: [
-      "Three specialized analytics engines",
-      "EPA per cap dollar metrics",
-      "Next.js dashboards with D3 visualizations",
-    ],
-    discipline: ["Full stack", "Data Analytics", "ML"],
-    stack: ["Next.js", "Python", "SQLite", "D3"],
-    url: "https://nfl-edge.vercel.app",
-    github: "https://github.com/satwikmed/NFL-Edge",
-    accent: "#5c3d1e",
-    screenshot: "/projects/nfl-edge.png",
-  },
-  {
-    id: "poker-night",
-    name: "Poker Night",
+    id: "casino",
+    name: "Casino",
     question:
-      "What if our home game could keep going after everyone moved to different cities?",
+      "What if our home poker game could keep going after everyone moved to different cities?",
     description:
-      "My friends and I used to play every week. Then we all moved, and no poker app plays the games the way we do at home. So I built one. It has ten of our house games, real time tables you join with a code, chat and emotes, and bots to practice against. It runs in the browser and saves to the iPhone home screen, no App Store needed.",
+      "Poker and blackjack for a group of friends, on their phones. One person hosts a table, everyone joins with a 4-letter code, and the dealer picks one of 11 games each hand, including the house rules my friends actually play.",
     highlights: [
-      "Ten house games, including split pot ones like Triple 9, Double Board, and High-Low",
-      "Real time multiplayer over WebSockets. Join from any phone with a table code",
-      "Practice mode against up to 7 bots, plus table chat and animated emotes",
+      "The server deals every hand. Each phone receives only its own cards, so nobody can read another hand from the browser",
+      "One hand evaluator for all 11 variants: wild cards, Omaha rules, and high-low split pots",
+      "Tests let bots play 200 hands of every game and check that chips are never created or lost",
     ],
     discipline: ["Full stack", "Real time"],
-    stack: ["React", "TypeScript", "Vite", "Node.js", "WebSockets", "PWA"],
-    url: "https://poker.satwikmedipalli.dev",
+    stack: ["TypeScript", "React", "Vite", "Node.js", "WebSockets"],
+    url: CASINO_URL,
     meta: "Live on Render",
-    github: "https://github.com/satwikmed/poker-night",
+    github: `${GH}/casino`,
+    featured: true,
     accent: "#0f3d2e",
-    screenshot: "/projects/poker-night.png",
+    screenshot: "/projects/casino.png",
   },
   {
     id: "endgame",
     name: "Endgame",
-    question: "What if your phone's feed actually ended?",
+    question: "What if your daily feed actually ended?",
     description:
-      "A personal app, built for my iPhone, that replaces doomscrolling with a fixed set of cards each day: news, a coding lesson, markets, history, a chess drill, Italian practice, and one thing to watch. Every card is DONE or Skip. Once they are all cleared, the app tells you to put the phone down. Claude writes each lesson when I open it, through Claude Code running on my Mac, so there is no API bill.",
+      "A personal Mac app that replaces doomscrolling with one daily paper: real news, coding and stock-market lessons, history, chess, Italian, a sudoku and a mini crossword. Every card is Done or Skip. When they are all cleared, the app tells you to close the laptop.",
     highlights: [
-      "Local first Expo app that syncs through Supabase with row level security",
-      "A Mac helper runs headless Claude Code to pull the news, write lessons, and answer chat",
-      "Chess drills from my own Chess.com games, spaced repetition Italian, and an MCP connector to discuss any card in Claude",
+      "38 stories a day from 22 RSS feeds, with duplicates merged, opinion pieces dropped, and each card written only from its sources",
+      "The window never calls an AI model. It queues jobs in Supabase, and a helper picks them up over Realtime and runs Claude Code on the same Mac",
+      "Chess drills from my own Chess.com games checked with Stockfish, spaced-repetition Italian, and row-level security on every table",
     ],
-    discipline: ["AI Engineering", "Mobile", "Full stack"],
-    stack: ["Expo", "React Native", "TypeScript", "Supabase", "Claude Code", "MCP"],
-    meta: "Personal app, not public",
+    discipline: ["Full stack", "AI Engineering", "Desktop"],
+    stack: ["Electron", "React", "TypeScript", "Supabase", "Claude Code", "MCP", "GitHub Actions"],
+    meta: "Personal Mac app",
+    contact: true,
     accent: "#1c3a32",
     screenshot: "/projects/endgame.png",
+  },
+  {
+    id: "wellness",
+    name: "Wellness",
+    question: "Can one app run my routine, my health and my spending?",
+    description:
+      "A personal Mac app in a spreadsheet style. Day plans built from timed blocks, a food log with calories and macros, workouts, and spending by category, with this week and this month side by side.",
+    highlights: [
+      "Day plans with task and free-time blocks, a daily checklist with a NOW marker, and a log that scores every planned day",
+      "Food, workouts and spending tracked against daily and weekly targets",
+      "Syncs through Supabase, and a Claude connector logs food, spending and plans for me",
+    ],
+    discipline: ["Full stack", "Desktop"],
+    stack: ["Electron", "JavaScript", "Supabase", "MCP"],
+    meta: "Personal Mac app",
+    contact: true,
+    accent: "#3d5a47",
+    screenshot: "/projects/wellness.png",
   },
 ];
 
@@ -274,61 +187,72 @@ export const experience: Experience[] = [
     period: "Oct 2026 to Present",
     kind: "Current role",
     question:
-      "What does it take to give investors financial data they can actually trust?",
+      "What does it take to give investors market data they can trust, live?",
     logo: "/logos/aagna.png",
-    product: "Financial data platform",
+    product: "Markets",
     context:
-      "Aagna is a fintech startup building portfolio risk intelligence for options investors. I work remotely from Livingston, NJ on the data layer under the product: company financials, SEC filings, prices, macro data, and the calendars that tie them together.",
+      "Aagna is a fintech startup. I started on the financial data layer and now build Aagna Markets (aagna.news), a public markets news and data site with live stock and ETF prices, company pages, an earnings and filings calendar, and prediction-market odds. I built it end to end across three repositories, working through Jira tickets and pull-request review.",
     phases: [
       {
-        title: "Financial data pipeline",
+        title: "Architecture",
         description:
-          "Built and extended the Python pipeline that loads US listed companies from SEC EDGAR (XBRL financials, 8-K, 6-K, 10-K/20-F, Form 4, 13F, N-PORT), Tiingo, FINRA, and OpenFIGI into SQLite and Postgres. Fixed how shareholders' equity was read from filings, which restored current balance sheets for Visa, Broadcom, UnitedHealth, P&G, Caterpillar, Verizon, AT&T, and Robinhood. Built share class weighted market cap, which moved Berkshire Hathaway from $741B to the correct $1.14T.",
+          "Split the product into three services: data ingestion with a read-only Data API over Postgres, a Django backend, and a Next.js front end, each in its own Docker container. Wrote a versioned API contract (TypeScript types, OpenAPI and a WebSocket spec, now at version 8) that a CI check enforces, so the two sides cannot drift apart.",
       },
       {
-        title: "Fresher, more complete data",
+        title: "Live prices",
         description:
-          "Added a fallback that reads a filing's own XBRL when the SEC's company data lags, so the latest quarter shows up sooner, validated against published figures like TSMC's FY2025 revenue of NT$3.81T. Fixed foreign filers (TSMC earnings from 6-Ks, CEO and description from 20-Fs). Built a coverage audit that cut data gaps on the 50 company test set from 125 to 69, and the automated site check reached 0 failures.",
+          "One upstream connection to the market-data vendor (Unusual Whales) fans out to every browser through the backend's WebSocket, so the vendor key never reaches a browser. It switches between polling, the vendor's direct stream and a private feed from the Data service, and screens licensing on what can be shown publicly.",
       },
       {
-        title: "Macro and calendar data",
+        title: "Prediction markets and chart data",
         description:
-          "Built a Fed and macro dataset from free public sources: FOMC meetings, projections, and dot plots since 2015, Fed speeches, the Beige Book, Treasury yields, the Fed's weekly balance sheet, CPI and jobs (BLS), GDP and PCE (BEA), FRED series, and an economic calendar. Added an earnings and dividend calendar with estimated next earnings dates for 48 of 50 companies.",
+          "Added Polymarket to the data hub: an hourly top-2,000 job and a daily full-catalogue job with keyset paging (about 3.6 minutes and 790 MB per run), covering about 20,600 events and 270,000 open markets. Built chart data covering up to 20,000 trading sessions of candles.",
       },
       {
-        title: "Engineering quality",
+        title: "Front end",
         description:
-          "Grew the test suite from 748 to 1,375 passing tests and added Postgres to CI. Ran a full code review that produced 36 fixes. Set up scheduled daily and weekly jobs with health checks and run status logging, and prepared the system for cloud deployment. Tagged every row with a license class (public, licensed, internal only) so redistribution stays compliant.",
+          "Built a TradingView-style price chart (5-minute to monthly candles, crosshair read-out, zoom, full screen), sector heatmaps, prediction-market cards, the earnings and filings calendar, a live headline feed, and an index-ETF strip with live hover charts.",
       },
       {
-        title: "Vendor evaluation",
+        title: "Finding the delay",
         description:
-          "Compared market data vendors (Unusual Whales, Intrinio, Tiingo) on coverage, price history, and redistribution rights. Wrote the technical questions and contract review flags behind the final vendor decision.",
+          "Built probes that compare the vendor's raw stream with what the public site delivers. The vendor delivered in 0.09 s; the site averaged 1.6 s with 5 to 12 s stalls. Proved the stalls came from the internal relay, not the vendor, and cut the batching delay from 0.66 s to 0.24 s in tests.",
       },
       {
-        title: "Aagna News (current)",
+        title: "iOS prototype",
         description:
-          "Designed and prototyped a public financial news site covering markets, sectors, companies, rates, and SEC filings, with an interactive sector treemap, live prices and yield curves, and a black and gold design system. I own the backend and the live data plan on WebSocket streaming while a teammate builds the Next.js frontend.",
+          "Wrapped the live site in an iOS app (Capacitor 7, Swift) with a native launch screen, pull to refresh, swipe-back navigation and an offline screen.",
+      },
+      {
+        title: "Before Markets: the financial data pipeline",
+        description:
+          "Built the Python pipeline loading SEC EDGAR XBRL filings, Tiingo, FINRA and OpenFIGI into SQLite and Postgres. Built share-class-weighted market cap (Berkshire Hathaway from $741B to the correct $1.14T), cut data gaps on the 50-company test set from 125 to 69, grew the test suite from 748 to 1,375 passing tests, and shipped 36 fixes from a full code review.",
+      },
+      {
+        title: "Macro data and vendor evaluation",
+        description:
+          "Built a Fed and macro dataset from public sources (FOMC projections and dot plots, Treasury yields, CPI, GDP, FRED) and compared market-data vendors on coverage, price history and redistribution rights for the final vendor decision.",
       },
     ],
     stack: [
       "Python",
-      "SQL",
+      "Django",
+      "django-ninja",
       "PostgreSQL",
-      "SQLite",
-      "Flask",
+      "TypeScript",
+      "Next.js",
+      "React",
+      "WebSockets",
+      "Docker",
+      "GitHub Actions",
       "pytest",
-      "Playwright",
-      "cron",
-      "XBRL",
       "SEC EDGAR",
-      "REST + WebSocket APIs",
     ],
     bullets: [
-      "Own a Python pipeline loading SEC EDGAR XBRL filings, Tiingo, FINRA, and OpenFIGI into Postgres for US listed companies",
-      "Built share class weighted market cap (Berkshire Hathaway $741B to $1.14T) and cut data gaps on the 50 company test set from 125 to 69",
-      "Grew the test suite from 748 to 1,375 passing tests, added Postgres to CI, and shipped 36 fixes from a full code review",
-      "Built a Fed and macro dataset (FOMC, dot plots, Treasury yields, CPI, GDP, FRED) and an earnings calendar covering 48 of 50 companies",
+      "Built Aagna Markets end to end: a Data API, a Django backend with a live-price WebSocket, and a Next.js front end, held together by a versioned API contract checked in CI",
+      "Sent one vendor price stream to every browser, then traced 5 to 12 s stalls to the internal relay and cut batching delay from 0.66 s to 0.24 s in tests",
+      "Added prediction-market data covering about 20,600 events and 270,000 open markets",
+      "Before Markets, built the SEC EDGAR data pipeline: fixed Berkshire's market cap from $741B to $1.14T and grew tests from 748 to 1,375",
     ],
   },
   {
@@ -394,7 +318,6 @@ export const experience: Experience[] = [
       "Docker",
       "GSEA",
     ],
-    github: "https://github.com/satwikmed/Boltzmann-Labs",
     bullets: [
       "Built a multi-omic analysis pipeline over millions of records using clustering, differential expression, and GSEA to prioritize cancer-linked cell populations",
       "Containerized and deployed with Docker, FastAPI, and Kubernetes, cutting researcher setup from hours to minutes",
@@ -443,7 +366,6 @@ export const experience: Experience[] = [
       "Postman",
       "Swagger",
     ],
-    github: "https://github.com/satwikmed/BostonLogix",
     bullets: [
       "Migrated 1M+ Hungry Jack's records from MongoDB to SQL Server and built Bold BI dashboards",
       "Benchmarked Azure OpenAI vs classical NLP on 100K recipes; team adopted the LLM path in production",
@@ -497,7 +419,6 @@ export const experience: Experience[] = [
       "ARIMA",
       "JSON APIs",
     ],
-    github: "https://github.com/satwikmed/Ideabytes",
     bullets: [
       "Built live Power BI dashboards from IoT JSON APIs for the CEO and company website",
       "Forecasted one-year performance across 100+ IoT sensors with ARIMA in Python",
@@ -515,58 +436,59 @@ export type SkillOffer = {
 
 export const skillOffers: SkillOffer[] = [
   {
-    id: "skills-agents",
-    prompt: "You want multi agent systems that cite their sources?",
-    title: "AI & Agents",
+    id: "skills-sports",
+    prompt: "You want answers you can defend in a front office?",
+    title: "Sports analytics",
     blurb:
-      "I like systems that cite their sources. Same stack behind SentinelAI, DiligenceAI, and the other agent work online.",
+      "Matched studies, held-out tests and placebo checks on Statcast and nflverse data. The methods behind ShapeShift and Gridiron.",
     skills: [
-      "LangChain",
-      "LangGraph",
-      "CrewAI",
-      "OpenAI APIs",
-      "Pinecone",
-      "RAGAS",
-      "Pydantic AI",
+      "Causal inference",
+      "Propensity matching",
+      "Bootstrap intervals",
+      "Logistic regression",
+      "Statcast",
+      "nflverse",
+      "DuckDB",
     ],
   },
   {
-    id: "skills-ml",
-    prompt: "You want dashboards that tell you what breaks next?",
-    title: "ML & Data",
+    id: "skills-market",
+    prompt: "You need market data that is right and on time?",
+    title: "Market data",
     blurb:
-      "Forecasting, explainability, and models that survive real data. Built across BoltBio, NFL Draft, and the Ideabytes IoT dashboard.",
+      "Live prices over WebSockets, filings parsed from XBRL, and prediction markets at scale. What I build at Aagna.",
     skills: [
-      "XGBoost",
-      "SHAP",
-      "Scikit learn",
-      "Pandas",
-      "NumPy",
-      "BERT",
-      "Power BI",
-    ],
-  },
-  {
-    id: "skills-infra",
-    prompt: "You need something that stays up after you close the laptop?",
-    title: "Infrastructure",
-    blurb:
-      "Containers, cloud storage, APIs, and databases. The layer that turns notebooks into things people can actually use.",
-    skills: [
-      "AWS S3",
-      "Azure",
-      "Docker",
-      "Kubernetes",
-      "FastAPI",
+      "Python",
+      "Django",
       "PostgreSQL",
+      "WebSockets",
+      "SEC EDGAR XBRL",
+      "Polymarket",
+      "Unusual Whales",
+    ],
+  },
+  {
+    id: "skills-fullstack",
+    prompt: "You want one person who can build it end to end?",
+    title: "Full stack and real time",
+    blurb:
+      "From the database to the screen, including the parts that have to update live.",
+    skills: [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Node.js",
+      "Electron",
+      "Supabase",
+      "Docker",
     ],
   },
   {
     id: "skills-languages",
-    prompt: "You want one person who can build it end to end?",
+    prompt: "You want to know what I write in?",
     title: "Languages",
     blurb:
-      "Python for ML and pipelines. SQL when the truth lives in the database. JavaScript when it needs a face. R when the stats homework fights back.",
+      "Python for data and backends. SQL when the truth lives in the database. TypeScript when it needs a face. R when the stats need a second opinion.",
     skills: ["Python", "SQL", "TypeScript", "JavaScript", "R"],
   },
 ];
@@ -586,7 +508,7 @@ export const contactInquiries: ContactInquiry[] = [
     title: "Let's talk",
     meta: "Open to opportunities",
     blurb:
-      "If you are hiring for AI/LLM, data science, or analytics, email me. Nine live products, a software engineering role at a fintech startup, three internships. I respond fast.",
+      "If you are hiring, or just want to talk about something on this site, email me. I respond fast.",
   },
 ];
 
@@ -597,89 +519,68 @@ export const education = {
   location: "Richardson, TX",
 };
 
-/** Three live demos shown under the hero so proof hits before the scroll. */
-export const heroProof = [
+export type ProofItem = {
+  id: string;
+  name: string;
+  hook: string;
+  url: string;
+  /** Badge on the card, e.g. "Live" or "Code". */
+  label: string;
+  screenshot?: string;
+};
+
+/** Three projects shown under the hero so proof hits before the scroll. */
+export const heroProof: ProofItem[] = [
   {
-    id: "lumen",
-    name: "Lumen",
-    hook: "S&P 500 terminal. Grounded AI that never invents a number.",
-    url: "https://lumen.satwikmedipalli.dev",
-    screenshot: "/projects/lumen.png",
+    id: "shapeshift",
+    name: "ShapeShift",
+    hook: "Which pitch redesigns work? A matched study of 4.8M Statcast pitches.",
+    url: SHAPESHIFT_URL,
+    label: "Live",
+    screenshot: "/projects/shapeshift.png",
   },
   {
-    id: "diligence-ai",
-    name: "DiligenceAI",
-    hook: "Six agents. Citation backed 10K diligence in minutes.",
-    url: "https://diligence.satwikmedipalli.dev",
-    screenshot: "/projects/diligence-ai-nine.png",
+    id: "gridiron",
+    name: "Gridiron",
+    hook: "The NFL combine adds nothing beyond draft slot: 0.794 vs 0.791 AUC.",
+    url: FOOTBALL_URL,
+    label: "Live",
+    screenshot: "/projects/gridiron.png",
   },
   {
-    id: "sentinelai",
-    name: "SentinelAI",
-    hook: "GenAI gateway with routing, guardrails, and CI evals.",
-    url: "https://sentinel.satwikmedipalli.dev",
-    screenshot: "/projects/sentinelai.png",
+    id: "casino",
+    name: "Casino",
+    hook: "Real-time poker and blackjack. The server deals, and your phone sees only your cards.",
+    url: CASINO_URL,
+    label: "Live",
+    screenshot: "/projects/casino.png",
   },
 ];
 
-export const recruiterMemo = {
+export const recruiterMemo: {
+  preface: string;
+  forwardBlurb: string;
+  caseLine: string;
+  whyNow: string;
+  proof: ProofItem[];
+} = {
   preface:
-    "You made it to Recruiter Mode. Either someone forwarded you, you pressed R on purpose, or the floating HIRE SATWIK text finally broke you. This is the sane half. Explorer is where I get weird on purpose.",
+    "You made it to Recruiter Mode, the one-page version. Press R anytime to go back to the full site.",
   forwardBlurb:
-    "Satwik Medipalli. Software Engineer at Aagna (fintech, SEC filings and market data pipelines). UT Dallas MS Business Analytics, Livingston NJ. 3 internships + UTD client project at DFW Technology + 9 live AI/analytics products (multiagent RAG, LLM eval, reliability ML, market terminals). Funny on purpose. Serious about the work. Open to AI/LLM Engineer and Data Scientist roles. Responds fast: 2atw1kmedipalli@gmail.com",
+    "Satwik Medipalli. Software Engineer at Aagna (fintech), where he built Aagna Markets, a live markets news and data site, end to end. UT Dallas MS Business Analytics. Sports analytics projects on MLB Statcast and NFL data, plus real-time apps. Livingston, NJ. satwik.medipalli@gmail.com",
   caseLine:
-    "Nine live products. One fintech engineering role. Three internships. One UTD client project. One sports + stocks nerd who wants the job.",
+    "A software engineer who builds live market data at work and studies sports with careful statistics on the side.",
   whyNow:
-    "I finished my MS in Business Analytics at UT Dallas in May 2026, and since October I've been a Software Engineer at Aagna, building the financial data layer under an options risk platform. Next I want a full time AI/LLM Engineer or Data Scientist role. The projects above are live if you want to check the work before we talk. I'm free to interview this week.",
+    "I finished my MS in Business Analytics at UT Dallas in May 2026. Since October I've been a Software Engineer at Aagna, where I built Aagna Markets end to end. The projects are online if you want to check the work first. I'm free to interview this week.",
   proof: [
+    ...heroProof,
     {
-      id: "lumen",
-      name: "Lumen",
-      hook: "S&P 500 terminal: SEC XBRL, risk lab, backtests, grounded AI",
-      url: "https://lumen.satwikmedipalli.dev",
-      screenshot: "/projects/lumen.png",
-    },
-    {
-      id: "diligence-ai",
-      name: "DiligenceAI",
-      hook: "6 agents, citation backed 10K analysis",
-      url: "https://diligence.satwikmedipalli.dev",
-      screenshot: "/projects/diligence-ai-nine.png",
-    },
-    {
-      id: "voiceiq",
-      name: "VoiceIQ",
-      hook: "LLM as judge voice agent eval + calibration",
-      url: "https://voiceiq.satwikmedipalli.dev",
-      screenshot: "/projects/voiceiq.png",
-    },
-    {
-      id: "silicon-sentinel",
-      name: "SiliconSentinel",
-      hook: "Fleet reliability ML at 83% recall and 80% precision",
-      url: "https://silicon.satwikmedipalli.dev",
-      screenshot: "/projects/silicon-sentinel.png",
-    },
-    {
-      id: "sentinelai",
-      name: "SentinelAI",
-      hook: "GenAI gateway with routing, guardrails, CI evals",
-      url: "https://sentinel.satwikmedipalli.dev",
-      screenshot: "/projects/sentinelai.png",
-    },
-    {
-      id: "shapeshift",
-      name: "ShapeShift",
-      hook: "Causal pitch redesign study on 5.6M+ Statcast pitches",
-      url: "https://shapeshift.satwikmedipalli.dev",
-      screenshot: "/projects/shapeshift.png",
-    },
-    {
-      id: "poker-night",
-      name: "Poker Night",
-      hook: "Real time multiplayer poker with 10 house games, built for my friends",
-      url: "https://poker.satwikmedipalli.dev",
-      screenshot: "/projects/poker-night.png",
+      id: "endgame",
+      name: "Endgame",
+      hook: "A daily paper that ends. Personal Mac app, email me to hear more",
+      url: "mailto:satwik.medipalli@gmail.com?subject=Endgame",
+      label: "Ask",
+      screenshot: "/projects/endgame.png",
     },
   ],
 };

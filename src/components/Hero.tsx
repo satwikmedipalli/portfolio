@@ -34,11 +34,11 @@ export function Hero() {
               Hi, I&apos;m {siteConfig.name.split(" ")[0]}.
               <br />
               <RedactionReveal delay={900}>
-                Nine projects live. Still building.
+                I build things on real data.
               </RedactionReveal>
               <br />
               <RedactionReveal delay={1400} className="italic text-[#3d5a47]">
-                Unless you&apos;d rather hire me first.
+                And I show my work.
               </RedactionReveal>
             </h1>
           </FadeIn>
@@ -46,11 +46,8 @@ export function Hero() {
           <FadeIn delay={0.18} immediate>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <BookCallButton source="hero" />
-              <a href="#experience" className="btn-secondary">
-                pick a question
-              </a>
-              <a href="#contact" className="btn-secondary" onClick={goToConfetti}>
-                skip to confetti →
+              <a href="#work" className="btn-secondary">
+                see my work
               </a>
               <a
                 href={siteConfig.github}
@@ -65,20 +62,11 @@ export function Hero() {
 
           <FadeIn delay={0.28} immediate>
             <p className="mt-8 max-w-lg font-mono text-[10px] leading-relaxed tracking-wide text-[#5c5c5c]/80">
-              Nobody scrolls to the bottom. That&apos;s where the confetti is,
-              and my email.{" "}
-              <a
-                href="#contact"
-                onClick={goToConfetti}
-                className="text-[#3d5a47] underline decoration-[#3d5a47]/30 underline-offset-4 transition-colors hover:text-[#1a1a1a]"
-              >
-                Go claim it
-              </a>
-              . Recruiters: press{" "}
+              Recruiters: press{" "}
               <kbd className="rounded border border-[#1a1a1a]/15 px-1.5 py-0.5 text-[#3d5a47]">
                 R
               </kbd>{" "}
-              to snap out of Explorer.
+              for the one-page version.
             </p>
           </FadeIn>
         </div>
@@ -107,10 +95,10 @@ export function Hero() {
         href="#contact"
         onClick={goToConfetti}
         className="absolute bottom-8 right-6 z-10 hidden items-center gap-2 md:flex"
-        aria-label="Skip to contact and confetti"
+        aria-label="Skip to contact"
       >
         <span className="hypnosis-scroll text-[10px] font-medium uppercase tracking-[0.25em] text-[#5c5c5c] [writing-mode:vertical-rl]">
-          Confetti ↓
+          Contact ↓
         </span>
       </a>
     </section>

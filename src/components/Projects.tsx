@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useMemo } from "react";
 import { InquiryStream } from "./inquiry/InquiryStream";
 import type { InquiryItem } from "./inquiry/InquiryProvider";
-import { projects } from "@/lib/data";
+import { projects, siteConfig } from "@/lib/data";
 
 function ProjectDetail({ project }: { project: (typeof projects)[number] }) {
   return (
@@ -77,6 +77,18 @@ function ProjectDetail({ project }: { project: (typeof projects)[number] }) {
             />
           </a>
         ) : null}
+        {project.contact && (
+          <a
+            href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(project.name)}`}
+            className="group inline-flex items-center gap-2"
+          >
+            want to know more? email me
+            <ArrowUpRight
+              size={14}
+              className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </a>
+        )}
         {project.github && (
           <a
             href={project.github}
@@ -98,7 +110,7 @@ export function Projects() {
         id: project.id,
         question: project.question,
         title: project.name,
-        meta: project.meta ?? "Live on Vercel",
+        meta: project.meta ?? (project.url ? "Live" : "Code on GitHub"),
         label: "Project",
         accent: project.accent,
         detail: <ProjectDetail project={project} />,
