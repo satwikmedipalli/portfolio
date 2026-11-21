@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  *            (default "networkidle" waits for all network traffic to stop).
  */
 const projects = [
-  { id: "shapeshift", url: "https://baseball-chi-rose.vercel.app", waitUntil: "load", settleMs: 2000 },
+  { id: "shapeshift", url: "https://baseball.satwikmedipalli.dev", waitUntil: "load", settleMs: 2000 },
   { id: "casino", url: "https://casino.satwikmedipalli.dev", settleMs: 4000 },
   { id: "gridiron", url: "https://football.satwikmedipalli.dev", settleMs: 3000 },
 ];

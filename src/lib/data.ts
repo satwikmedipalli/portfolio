@@ -52,7 +52,7 @@ export type Project = {
 };
 
 const GH = "https://github.com/satwikmedipalli";
-const SHAPESHIFT_URL = "https://baseball-chi-rose.vercel.app";
+const SHAPESHIFT_URL = "https://baseball.satwikmedipalli.dev";
 const CASINO_URL = "https://casino.satwikmedipalli.dev";
 const FOOTBALL_URL = "https://football.satwikmedipalli.dev";
 
