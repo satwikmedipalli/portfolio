@@ -55,6 +55,7 @@ const GH = "https://github.com/satwikmedipalli";
 const SHAPESHIFT_URL = "https://baseball-chi-rose.vercel.app";
 const CASINO_URL = "https://casino.satwikmedipalli.dev";
 const FOOTBALL_URL = "https://football.satwikmedipalli.dev";
+const MARKETS_URL = "https://markets.satwikmedipalli.dev";
 
 export const projects: Project[] = [
   {
@@ -77,6 +78,26 @@ export const projects: Project[] = [
     span: "wide",
     accent: "#8d1f2f",
     screenshot: "/projects/shapeshift.png",
+  },
+  {
+    id: "pricedin",
+    name: "Priced In",
+    question: "When the odds on Kalshi jump, does Wall Street already know?",
+    description:
+      "Priced In lines up sudden moves in Kalshi prediction-market odds with minute-by-minute stock prices to measure which stocks move with the odds, by how much, and which market reprices first. The method was pre-registered before any stock data loaded, and the newest 30% of events are sealed for one final test.",
+    highlights: [
+      "201 contract moves across 10 Kalshi markets, from Fed decisions and the Fed-chair race to tariffs and a shutdown, matched to 235k minute bars on bid–ask midquotes so stale trades can't fake a lead",
+      "Event betas and lead–lag profiles with event-bootstrap intervals, time-shift and shuffled-pair placebos, and Benjamini–Hochberg across all 30 stock–event pairs",
+      "Reports the null honestly: 28 of 30 pairs show no clear leader and no effect survives every test yet. Results are also served through a REST API and an MCP server",
+    ],
+    discipline: ["Markets Research", "Statistics", "Data Engineering"],
+    stack: ["Python", "DuckDB", "pandas", "NumPy", "FastAPI", "MCP", "Kalshi API", "Alpaca", "Next.js"],
+    url: MARKETS_URL,
+    meta: "Live on Vercel",
+    github: `${GH}/markets`,
+    featured: true,
+    accent: "#8a5a00",
+    screenshot: "/projects/pricedin.png",
   },
   {
     id: "gridiron",
@@ -574,6 +595,14 @@ export const recruiterMemo: {
     "I finished my MS in Business Analytics at UT Dallas in May 2026. Since October I've been a Software Engineer at Aagna, where I built Aagna Markets end to end. The projects are online if you want to check the work first. I'm free to interview this week.",
   proof: [
     ...heroProof,
+    {
+      id: "pricedin",
+      name: "Priced In",
+      hook: "Do Kalshi odds or stocks reprice first? A pre-registered test on 201 event moves.",
+      url: MARKETS_URL,
+      label: "Live",
+      screenshot: "/projects/pricedin.png",
+    },
     {
       id: "endgame",
       name: "Endgame",
